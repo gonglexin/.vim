@@ -21,6 +21,9 @@ Bundle 'kien/ctrlp.vim'
 " Moving
 Bundle 'Lokaltog/vim-easymotion'
 
+" Editing
+Bundle 'ervandew/supertab'
+
 " Colorscheme
 Bundle 'molokai'
 Bundle 'w0ng/vim-hybrid'
