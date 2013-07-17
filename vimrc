@@ -54,11 +54,15 @@ filetype plugin indent on      " Automatically detect file types.
 syntax enable
 
 set nowrap
-set ts=2
 set nobackup
 set noswapfile
 set hlsearch
 set shortmess=atI
+
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
 
 " NERD Tree
 imap <silent> <F2> <esc>:NERDTreeToggle<CR>
