@@ -43,7 +43,9 @@ Bundle 'ap/vim-css-color'
 Bundle 'tpope/vim-fugitive'
 
 " Bundle others
-Bundle 'Lokaltog/vim-powerline'
+"Bundle 'Lokaltog/vim-powerline'
+"Bundle 'Lokaltog/powerline'
+Bundle 'bling/vim-airline'
 Bundle 'mileszs/ack.vim'
 
 " General
