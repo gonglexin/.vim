@@ -37,6 +37,7 @@ Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'honza/vim-snippets'
 Bundle 'ap/vim-css-color'
+Bundle 'scrooloose/syntastic'
 
 " Git integration
 Bundle 'tpope/vim-fugitive'
