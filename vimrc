@@ -7,7 +7,6 @@
 set nocompatible
 filetype off
 
-" let Vundle manage bundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -43,8 +42,6 @@ Bundle 'ap/vim-css-color'
 Bundle 'tpope/vim-fugitive'
 
 " Bundle others
-"Bundle 'Lokaltog/vim-powerline'
-"Bundle 'Lokaltog/powerline'
 Bundle 'bling/vim-airline'
 Bundle 'mileszs/ack.vim'
 
@@ -65,7 +62,7 @@ set nobackup
 set noswapfile
 set hlsearch
 set encoding=utf-8
-set shortmess=atI
+"set shortmess=atI
 set backspace=indent,eol,start
 
 " List chars
@@ -85,33 +82,21 @@ set smartcase   " ... unless they contain at least one capital letter
 
 set cursorline
 
-" Disable output and VCS files
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
-
-" Disable archive files
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-
-" Ignore bundler and sass cache
 set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
-
-" Ignore rails temporary asset caches
 set wildignore+=*/tmp/cache/assets/*/sprockets/*,*/tmp/cache/assets/*/sass/*
-
-" Disable temp and backup files
 set wildignore+=*.swp,*~,._*
 
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+set laststatus=2
 
 " NERD Tree
 imap <silent> <F2> <esc>:NERDTreeToggle<CR>
 nmap <silent> <F2> :NERDTreeToggle<CR>
-
-" PowerLine
-set laststatus=2
-let g:Powerline_symbols = 'fancy'
 
 " NERDCommenter mappings
 if has("gui_macvim") && has("gui_running")
