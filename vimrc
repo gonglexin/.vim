@@ -49,6 +49,7 @@ Bundle 'bling/vim-airline'
 Bundle 'mileszs/ack.vim'
 
 " General
+set shell=bash " let vim load the rbenv ruby path first (don't kown the reason)
 nmap ,s :source ~/.vimrc<CR>
 nmap ,e :e ~/.vimrc<CR>
 
