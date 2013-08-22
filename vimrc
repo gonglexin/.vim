@@ -31,6 +31,8 @@ Bundle 'altercation/vim-colors-solarized'
 " Programming
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-dispatch'
+Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'garbas/vim-snipmate'
 Bundle 'tomtom/tlib_vim'
@@ -98,6 +100,12 @@ set laststatus=2
 " NERD Tree
 imap <silent> <F2> <esc>:NERDTreeToggle<CR>
 nmap <silent> <F2> :NERDTreeToggle<CR>
+
+"let g:airline_powerline_fonts=1
+let g:airline_left_sep=""
+let g:airline_left_alt_sep=""
+let g:airline_right_sep=""
+let g:airline_right_alt_sep=""
 
 " NERDCommenter mappings
 if has("gui_macvim") && has("gui_running")
