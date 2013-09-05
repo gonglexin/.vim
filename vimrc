@@ -33,13 +33,14 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-surround'
-Bundle 'scrooloose/nerdcommenter'
+Bundle 'tomtom/tcomment_vim'
 Bundle 'garbas/vim-snipmate'
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'honza/vim-snippets'
 Bundle 'ap/vim-css-color'
 Bundle 'scrooloose/syntastic'
+Bundle 'kchmck/vim-coffee-script'
 
 " Git integration
 Bundle 'tpope/vim-fugitive'
@@ -108,10 +109,7 @@ let g:airline_left_alt_sep=""
 let g:airline_right_sep=""
 let g:airline_right_alt_sep=""
 
-" NERDCommenter mappings
-if has("gui_macvim") && has("gui_running")
-  map <D-/> <plug>NERDCommenterToggle<CR>
-  imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
-else
-  map <leader>/ <plug>NERDCommenterToggle<CR>
-endif
+" Dispatch mapping
+" TODO: make it working in macvim
+autocmd FileType ruby let b:dispatch = 'ruby -w %'
+nnoremap <leader>r :Dispatch<CR>
