@@ -27,6 +27,7 @@ Bundle 'molokai'
 Bundle 'w0ng/vim-hybrid'
 Bundle 'nelstrom/vim-mac-classic-theme'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 
 " Programming
 Bundle 'vim-ruby/vim-ruby'
@@ -113,3 +114,5 @@ let g:airline_right_alt_sep=""
 " TODO: make it working in macvim
 autocmd FileType ruby let b:dispatch = 'ruby -w %'
 nnoremap <leader>r :Dispatch<CR>
+
+"let g:syntastic_ruby_checkers = ['mri', 'rubocop']
