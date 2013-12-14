@@ -9,8 +9,8 @@ cd $HOME/.vim
 mkdir bundle
 cd bundle
 git clone https://github.com/gmarik/vundle.git
-cd $HOME/.vim
-ln -s vimrc $HOME/.vimrc
+cd $HOME
+ln -s .vim/vimrc .vimrc
 vim +BundleInstall +qall
 
 echo "Done."
