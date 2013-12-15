@@ -6,6 +6,7 @@
 
 set nocompatible
 filetype off
+set t_Co=256
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -48,7 +49,7 @@ Bundle 'tpope/vim-fugitive'
 
 " Bundle others
 Bundle 'bling/vim-airline'
-Bundle 'mileszs/ack.vim'
+Bundle 'rking/ag.vim'
 
 " General
 set shell=bash " let vim load the rbenv ruby path first (don't kown the reason)
