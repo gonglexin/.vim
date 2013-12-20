@@ -14,5 +14,3 @@ ln -s .vim/vimrc .vimrc
 vim +BundleInstall +qall
 
 echo "Done."
-
-
