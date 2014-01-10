@@ -60,7 +60,7 @@ let mapleader = ","
 let maplocalleader = "\\"
 set nu
 
-colorscheme hybrid
+colorscheme Tomorrow
 filetype plugin indent on      " Automatically detect file types.
 syntax enable
 
@@ -114,6 +114,7 @@ let g:airline_right_alt_sep=""
 " Dispatch mapping
 " TODO: make it working in macvim
 autocmd FileType ruby let b:dispatch = 'ruby -w %'
+autocmd FileType javascript let b:dispatch = 'node %'
 nnoremap <leader>r :Dispatch<CR>
 
 "let g:syntastic_ruby_checkers = ['mri', 'rubocop']
