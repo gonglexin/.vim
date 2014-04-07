@@ -43,6 +43,7 @@ Bundle 'honza/vim-snippets'
 Bundle 'ap/vim-css-color'
 Bundle 'scrooloose/syntastic'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'slim-template/vim-slim.git'
 
 " Git integration
 Bundle 'tpope/vim-fugitive'
@@ -53,14 +54,14 @@ Bundle 'rking/ag.vim'
 
 " General
 set shell=bash " let vim load the rbenv ruby path first (don't kown the reason)
-nmap ,s :source ~/.vimrc<CR>
-nmap ,e :e ~/.vimrc<CR>
+nmap ,s :source $MYVIMRC<CR>
+nmap ,e :e $MYVIMRC<CR>
 
 let mapleader = ","
 let maplocalleader = "\\"
 set nu
 
-colorscheme Tomorrow
+colorscheme Tomorrow-Night-Eighties
 filetype plugin indent on      " Automatically detect file types.
 syntax enable
 
