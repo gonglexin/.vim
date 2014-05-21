@@ -29,6 +29,8 @@ Bundle 'w0ng/vim-hybrid'
 Bundle 'nelstrom/vim-mac-classic-theme'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Bundle 'chriskempson/base16-vim'
+
 
 " Programming
 Bundle 'vim-ruby/vim-ruby'
@@ -44,6 +46,7 @@ Bundle 'ap/vim-css-color'
 Bundle 'scrooloose/syntastic'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'slim-template/vim-slim.git'
+Bundle 'hwartig/vim-seeing-is-believing'
 
 " Git integration
 Bundle 'tpope/vim-fugitive'
@@ -68,7 +71,6 @@ syntax enable
 set nowrap
 set nobackup
 set noswapfile
-set hlsearch
 set encoding=utf-8
 "set shortmess=atI
 set backspace=indent,eol,start
@@ -116,6 +118,14 @@ let g:airline_right_alt_sep=""
 " TODO: make it working in macvim
 autocmd FileType ruby let b:dispatch = 'ruby -w %'
 autocmd FileType javascript let b:dispatch = 'node %'
-nnoremap <leader>r :Dispatch<CR>
+" nnoremap <leader>r :Dispatch<CR>
 
 "let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+
+nmap <buffer> <leader>r <Plug>(seeing-is-believing-run)
+xmap <buffer> <leader>r <Plug>(seeing-is-believing-run)
+imap <buffer> <leader>r <Plug>(seeing-is-believing-run)
+
+nmap <buffer> <F4> <Plug>(seeing-is-believing-mark)
+xmap <buffer> <F4> <Plug>(seeing-is-believing-mark)
+imap <buffer> <F4> <Plug>(seeing-is-believing-mark)
