@@ -120,7 +120,7 @@ autocmd FileType ruby let b:dispatch = 'ruby -w %'
 autocmd FileType javascript let b:dispatch = 'node %'
 " nnoremap <leader>r :Dispatch<CR>
 
-"let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 
 nmap <buffer> <leader>r <Plug>(seeing-is-believing-run)
 xmap <buffer> <leader>r <Plug>(seeing-is-believing-run)
