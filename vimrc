@@ -6,56 +6,58 @@
 
 set nocompatible
 filetype off
-set t_Co=256
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " Navigation
-Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
 
 " Moving
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
 
 " Editing
-Bundle 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 
 " Colorscheme
-Bundle 'molokai'
-Bundle 'w0ng/vim-hybrid'
-Bundle 'nelstrom/vim-mac-classic-theme'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Bundle 'chriskempson/base16-vim'
-
+Plugin 'molokai'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'nelstrom/vim-mac-classic-theme'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plugin 'chriskempson/base16-vim'
 
 " Programming
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-dispatch'
-Bundle 'tpope/vim-surround'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'tomtom/tlib_vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'honza/vim-snippets'
-Bundle 'ap/vim-css-color'
-Bundle 'scrooloose/syntastic'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'slim-template/vim-slim.git'
-Bundle 'hwartig/vim-seeing-is-believing'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-surround'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'tomtom/tlib_vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'honza/vim-snippets'
+Plugin 'ap/vim-css-color'
+Plugin 'scrooloose/syntastic'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'slim-template/vim-slim.git'
+Plugin 'hwartig/vim-seeing-is-believing'
 
 " Git integration
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
-" Bundle others
-Bundle 'bling/vim-airline'
-Bundle 'rking/ag.vim'
+" Plugin others
+Plugin 'bling/vim-airline'
+Plugin 'rking/ag.vim'
+
+call vundle#end()
+filetype plugin indent on      " Automatically detect file types.
 
 " General
+set t_Co=256
 set shell=bash " let vim load the rbenv ruby path first (don't kown the reason)
 nmap ,s :source $MYVIMRC<CR>
 nmap ,e :e $MYVIMRC<CR>
@@ -65,7 +67,6 @@ let maplocalleader = "\\"
 set nu
 
 colorscheme Tomorrow-Night-Eighties
-filetype plugin indent on      " Automatically detect file types.
 syntax enable
 
 set nowrap
