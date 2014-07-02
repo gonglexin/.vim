@@ -36,9 +36,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-surround'
 Plugin 'tomtom/tcomment_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'tomtom/tlib_vim'
-Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ap/vim-css-color'
 Plugin 'scrooloose/syntastic'
@@ -108,6 +106,11 @@ set laststatus=2
 " NERD Tree
 imap <silent> <F2> <esc>:NERDTreeToggle<CR>
 nmap <silent> <F2> :NERDTreeToggle<CR>
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 "let g:airline_powerline_fonts=1
 let g:airline_left_sep=""
