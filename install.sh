@@ -8,7 +8,7 @@ rm -f $HOME/.gvimrc
 cd $HOME/.vim
 mkdir bundle
 cd bundle
-git clone https://github.com/gmarik/vundle.git
+git clone https://github.com/gmarik/Vundle.vim.git
 cd $HOME
 ln -s .vim/vimrc .vimrc
 vim +BundleInstall +qall
