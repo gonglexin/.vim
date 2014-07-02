@@ -11,6 +11,6 @@ cd bundle
 git clone https://github.com/gmarik/Vundle.vim.git
 cd $HOME
 ln -s .vim/vimrc .vimrc
-vim +BundleInstall +qall
+vim +PluginInstall +qall
 
 echo "Done."
