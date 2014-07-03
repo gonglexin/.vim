@@ -20,8 +20,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
 
 " Editing
-" Plugin 'ervandew/supertab'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'ervandew/supertab'
 
 " Colorscheme
 Plugin 'molokai'
@@ -108,33 +107,11 @@ set laststatus=2
 imap <silent> <F2> <esc>:NERDTreeToggle<CR>
 nmap <silent> <F2> :NERDTreeToggle<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" UltiSnips
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Integrates UltiSnips tab completion with YouCompleteMe
-" See: https://github.com/Valloric/YouCompleteMe/issues/36
-let g:UltiSnipsExpandTrigger       = "<tab>"
-let g:UltiSnipsJumpForwardTrigger  = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsSnippetDirectories  = ["snips"]
-function! g:UltiSnips_Complete()
-  call UltiSnips#ExpandSnippet()
-  if g:ulti_expand_res == 0
-    if pumvisible()
-      return "\<C-n>"
-    else
-      call UltiSnips#JumpForwards()
-      if g:ulti_jump_forwards_res == 0
-        return "\<TAB>"
-      endif
-    endif
-  endif
-  return ""
-endfunction
-
-" Enable, when the first time in insert mode.
-au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_use_bundler = 1
+" autocmd FileType ruby,eruby let g:rubycomplete_load_gemfile = 1
 
 "let g:airline_powerline_fonts=1
 let g:airline_left_sep=""
