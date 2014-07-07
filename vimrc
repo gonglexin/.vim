@@ -15,6 +15,7 @@ Plugin 'gmarik/Vundle.vim'
 " Navigation
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
+Plugin 'szw/vim-ctrlspace'
 
 " Moving
 Plugin 'Lokaltog/vim-easymotion'
@@ -101,6 +102,18 @@ set shiftwidth=2
 set expandtab
 set laststatus=2
 
+" Jump to the last know position in a file after opening it
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+" Clear the search buffer when hitting return
+:nnoremap <CR> :nohlsearch<cr>
+
+" vim-ctrlspace
+set hidden
+hi CtrlSpaceSelected term=reverse ctermfg=187   guifg=#d7d7af ctermbg=23    guibg=#005f5f cterm=bold gui=bold
+hi CtrlSpaceNormal   term=NONE    ctermfg=244   guifg=#808080 ctermbg=232   guibg=#080808 cterm=NONE gui=NONE
+hi CtrlSpaceSearch   ctermfg=220  guifg=#ffd700 ctermbg=NONE  guibg=NONE    cterm=bold    gui=bold
+hi CtrlSpaceStatus   ctermfg=230  guifg=#ffffd7 ctermbg=234   guibg=#1c1c1c cterm=NONE    gui=NONE
+
 " NERD Tree
 imap <leader>n <esc>:NERDTreeToggle<CR>
 nmap <leader>n :NERDTreeToggle<CR>
@@ -124,7 +137,8 @@ nnoremap <leader>r :Dispatch<CR>
 nnoremap <leader>v :Copen<CR>
 
 " vim-airline
-"let g:airline_powerline_fonts=1
+" let g:airline_powerline_fonts=1
+let g:airline_exclude_preview = 1 " hacking vim-ctrlspace
 let g:airline_left_sep=""
 let g:airline_left_alt_sep=""
 let g:airline_right_sep=""
