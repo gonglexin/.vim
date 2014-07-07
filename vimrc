@@ -25,10 +25,7 @@ Plugin 'ervandew/supertab'
 " Colorscheme
 Plugin 'molokai'
 Plugin 'w0ng/vim-hybrid'
-Plugin 'nelstrom/vim-mac-classic-theme'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Plugin 'chriskempson/base16-vim'
 
 " Programming
 Plugin 'vim-ruby/vim-ruby'
@@ -42,12 +39,14 @@ Plugin 'ap/vim-css-color'
 Plugin 'scrooloose/syntastic'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'slim-template/vim-slim.git'
-Plugin 'hwartig/vim-seeing-is-believing'
 
 " Git integration
 Plugin 'tpope/vim-fugitive'
 
-" Plugin others
+" Tmux integration
+Plugin 'benmills/vimux'
+
+" Other plugins
 Plugin 'bling/vim-airline'
 Plugin 'rking/ag.vim'
 
@@ -71,7 +70,6 @@ set nowrap
 set nobackup
 set noswapfile
 set encoding=utf-8
-"set shortmess=atI
 set backspace=indent,eol,start
 
 " List chars
@@ -104,33 +102,36 @@ set expandtab
 set laststatus=2
 
 " NERD Tree
-imap <silent> <F2> <esc>:NERDTreeToggle<CR>
-nmap <silent> <F2> :NERDTreeToggle<CR>
+imap <leader>n <esc>:NERDTreeToggle<CR>
+nmap <leader>n :NERDTreeToggle<CR>
 
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_use_bundler = 1
-" autocmd FileType ruby,eruby let g:rubycomplete_load_gemfile = 1
+" vimux
+let g:VimuxPromptString = "=>"
+let g:VimuxHeight = "30"
+map <Leader>rb :call VimuxRunCommand("clear; ruby -w " . bufname("%"))<CR>
+map <Leader>vp :VimuxPromptCommand<CR>
+map <Leader>vl :VimuxRunLastCommand<CR>
+map <Leader>vi :VimuxInspectRunner<CR>
+map <Leader>vq :VimuxCloseRunner<CR>
+map <Leader>vx :VimuxInterruptRunner<CR>
+map <Leader>vc :VimuxClearRunnerHistory<CR>
+map <Leader>vz :VimuxZoomRunner<CR>
 
+" vim-dispatch
+autocmd FileType ruby let b:dispatch = 'ruby -w %'
+autocmd FileType javascript let b:dispatch = 'node %'
+nnoremap <leader>r :Dispatch<CR>
+nnoremap <leader>v :Copen<CR>
+
+" vim-airline
 "let g:airline_powerline_fonts=1
 let g:airline_left_sep=""
 let g:airline_left_alt_sep=""
 let g:airline_right_sep=""
 let g:airline_right_alt_sep=""
 
-" Dispatch mapping
-" TODO: make it working in macvim
-autocmd FileType ruby let b:dispatch = 'ruby -w %'
-autocmd FileType javascript let b:dispatch = 'node %'
-" nnoremap <leader>r :Dispatch<CR>
-
-" let g:syntastic_ruby_checkers = ['rubocop', 'mri']
-
-nmap <buffer> <leader>r <Plug>(seeing-is-believing-run)
-xmap <buffer> <leader>r <Plug>(seeing-is-believing-run)
-imap <buffer> <leader>r <Plug>(seeing-is-believing-run)
-
-nmap <buffer> <F4> <Plug>(seeing-is-believing-mark)
-xmap <buffer> <F4> <Plug>(seeing-is-believing-mark)
-imap <buffer> <F4> <Plug>(seeing-is-believing-mark)
+" vim-ruby
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_use_bundler = 1
