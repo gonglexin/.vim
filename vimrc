@@ -121,7 +121,9 @@ nmap <leader>n :NERDTreeToggle<CR>
 " vimux
 let g:VimuxPromptString = "=>"
 let g:VimuxHeight = "30"
-map <Leader>rb :call VimuxRunCommand("clear; ruby -w " . bufname("%"))<CR>
+autocmd FileType ruby       map <Leader>rr :call VimuxRunCommand("clear; ruby -w " . bufname("%"))<CR>
+autocmd FileType javascript map <Leader>rr :call VimuxRunCommand("clear; node " . bufname("%"))<CR>
+autocmd FileType go         map <Leader>rr :call VimuxRunCommand("clear; go run " . bufname("%"))<CR>
 map <Leader>vp :VimuxPromptCommand<CR>
 map <Leader>vl :VimuxRunLastCommand<CR>
 map <Leader>vi :VimuxInspectRunner<CR>
