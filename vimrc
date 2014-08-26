@@ -14,7 +14,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " Navigation
 Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'szw/vim-ctrlspace'
 
 " Moving
