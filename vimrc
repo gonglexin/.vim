@@ -12,6 +12,9 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
+" General settings
+Plugin 'tpope/vim-sensible'
+
 " Navigation
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -30,6 +33,7 @@ Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 
 " Programming
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-surround'
@@ -40,6 +44,8 @@ Plugin 'ap/vim-css-color'
 Plugin 'scrooloose/syntastic'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'slim-template/vim-slim.git'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
 
 " Git integration
 Plugin 'tpope/vim-fugitive'
@@ -52,39 +58,23 @@ Plugin 'bling/vim-airline'
 Plugin 'rking/ag.vim'
 
 call vundle#end()
-filetype plugin indent on      " Automatically detect file types.
+filetype plugin indent on
 
 " General
-set t_Co=256
-set shell=bash " let vim load the rbenv ruby path first (don't kown the reason)
-nmap ,s :source $MYVIMRC<CR>
-nmap ,e :e $MYVIMRC<CR>
-
 let mapleader = ","
-let maplocalleader = "\\"
 set nu
 
-colorscheme Tomorrow-Night-Eighties
-syntax enable
+nmap <leader>s :source $MYVIMRC<CR>
+nmap <leader>e :e $MYVIMRC<CR>
+
+" colorscheme Tomorrow-Night-Eighties
+colorscheme hybrid 
 
 set nowrap
 set nobackup
 set noswapfile
-set encoding=utf-8
-set backspace=indent,eol,start
-
-" List chars
-set list
-set listchars=""                  " Reset the listchars
-set listchars=tab:\ \             " a tab should display as "  ", trailing whitespace as "."
-set listchars+=trail:.            " show trailing spaces as dots
-set listchars+=extends:>          " The character to show in the last column when wrap is
-                                  " off and the line continues beyond the right of the screen
-set listchars+=precedes:<         " The character to show in the last column when wrap is
-                                  " off and the line continues beyond the left of the screen
 
 set hlsearch    " highlight matches
-set incsearch   " incremental searching
 set ignorecase  " searches are case insensitive...
 set smartcase   " ... unless they contain at least one capital letter
 
@@ -100,7 +90,6 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
-set laststatus=2
 
 " Jump to the last know position in a file after opening it
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -151,3 +140,6 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_use_bundler = 1
+
+" rubocop
+" let g:syntastic_ruby_checkers = ['rubocop', 'mri']
