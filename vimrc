@@ -4,61 +4,89 @@
 " God like this
 "
 
-set nocompatible
+if !1 | finish | endif
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if has('vim_starting')
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-Plugin 'gmarik/Vundle.vim'
+if has('nvim')
+  runtime! python_setup.vim
+endif
+
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " General settings
-Plugin 'tpope/vim-sensible'
+NeoBundle 'tpope/vim-sensible'
 
 " Navigation
-Plugin 'scrooloose/nerdtree'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'szw/vim-ctrlspace'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'ctrlpvim/ctrlp.vim'
+" NeoBundle 'szw/vim-ctrlspace'
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
+NeoBundle 'Shougo/unite.vim'
 
 " Moving
-Plugin 'Lokaltog/vim-easymotion'
+NeoBundle 'Lokaltog/vim-easymotion'
 
 " Editing
-Plugin 'ervandew/supertab'
+NeoBundle 'ervandew/supertab'
 
 " Colorscheme
-Plugin 'molokai'
-Plugin 'w0ng/vim-hybrid'
-Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+NeoBundle 'molokai'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'jnurmine/Zenburn'
 
 " Programming
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-surround'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'ap/vim-css-color'
-Plugin 'scrooloose/syntastic'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'slim-template/vim-slim.git'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
+NeoBundle 'ap/vim-css-color'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'kchmck/vim-coffee-script'
+" NeoBundle 'slim-template/vim-slim.git'
+" NeoBundle 'mattn/webapi-vim'
+" NeoBundle 'mattn/gist-vim'
+NeoBundle 'fatih/vim-go'
+" NeoBundle 'gregsexton/gitv'
+NeoBundle 'janko-m/vim-test'
+
+" NeoBundle 'Shougo/neocomplete.vim'
+" NeoBundle 'Shougo/neosnippet'
+" NeoBundle 'Shougo/neosnippet-snippets'
 
 " Git integration
-Plugin 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-fugitive'
 
 " Tmux integration
-Plugin 'benmills/vimux'
+NeoBundle 'benmills/vimux'
 
 " Other plugins
-Plugin 'bling/vim-airline'
-Plugin 'rking/ag.vim'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'rking/ag.vim'
 
-call vundle#end()
+call neobundle#end()
 filetype plugin indent on
+NeoBundleCheck
 
 " General
 let mapleader = ","
@@ -66,9 +94,6 @@ set nu
 
 nmap <leader>s :source $MYVIMRC<CR>
 nmap <leader>e :e $MYVIMRC<CR>
-
-" colorscheme Tomorrow-Night-Eighties
-colorscheme hybrid 
 
 set nowrap
 set nobackup
@@ -93,15 +118,13 @@ set expandtab
 
 " Jump to the last know position in a file after opening it
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-" Clear the search buffer when hitting return
-:nnoremap <CR> :nohlsearch<cr>
 
 " vim-ctrlspace
-set hidden
-hi CtrlSpaceSelected term=reverse ctermfg=187   guifg=#d7d7af ctermbg=23    guibg=#005f5f cterm=bold gui=bold
-hi CtrlSpaceNormal   term=NONE    ctermfg=244   guifg=#808080 ctermbg=232   guibg=#080808 cterm=NONE gui=NONE
-hi CtrlSpaceSearch   ctermfg=220  guifg=#ffd700 ctermbg=NONE  guibg=NONE    cterm=bold    gui=bold
-hi CtrlSpaceStatus   ctermfg=230  guifg=#ffffd7 ctermbg=234   guibg=#1c1c1c cterm=NONE    gui=NONE
+" set hidden
+" hi CtrlSpaceSelected term=reverse ctermfg=187   guifg=#d7d7af ctermbg=23    guibg=#005f5f cterm=bold gui=bold
+" hi CtrlSpaceNormal   term=NONE    ctermfg=244   guifg=#808080 ctermbg=232   guibg=#080808 cterm=NONE gui=NONE
+" hi CtrlSpaceSearch   ctermfg=220  guifg=#ffd700 ctermbg=NONE  guibg=NONE    cterm=bold    gui=bold
+" hi CtrlSpaceStatus   ctermfg=230  guifg=#ffffd7 ctermbg=234   guibg=#1c1c1c cterm=NONE    gui=NONE
 
 " NERD Tree
 imap <leader>n <esc>:NERDTreeToggle<CR>
@@ -122,9 +145,11 @@ map <Leader>vc :VimuxClearRunnerHistory<CR>
 map <Leader>vz :VimuxZoomRunner<CR>
 
 " vim-dispatch
-autocmd FileType ruby let b:dispatch = 'ruby -w %'
+" autocmd FileType ruby let b:dispatch = 'ruby -w %'
+autocmd FileType ruby let b:dispatch = 'ruby %'
 autocmd FileType javascript let b:dispatch = 'node %'
-nnoremap <leader>r :Dispatch<CR>
+autocmd FileType go let b:dispatch = 'go run %'
+" nnoremap <leader>r :Dispatch<CR>
 nnoremap <leader>v :Copen<CR>
 
 " vim-airline
@@ -141,5 +166,51 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_use_bundler = 1
 
+" vim-go
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+let g:go_fmt_command = "goimports"
+
+" vim-test
+" let test#strategy = "vimux"
+let test#strategy = "dispatch"
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+
 " rubocop
 " let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+
+" Unite
+nnoremap <leader>x :Unite file_rec/async<CR>
+nnoremap <silent> <leader><space> :<C-u>Unite -toggle -auto-resize -buffer-name=mixed file_rec/async:! buffer file_mru bookmark<cr><c-u>
+nnoremap <silent> <leader>f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async:!<cr><c-u>
+let g:unite_source_history_yank_enable = 1
+nnoremap <leader>y :Unite history/yank<cr>
+nnoremap <space>/ :Unite grep:.<CR>
+nnoremap <leader>b :Unite -quick-match buffer<CR>
+nnoremap <silent> <leader>g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+if executable('pt')
+  let g:unite_source_grep_command = 'pt'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+  let g:unite_source_grep_recursive_opt = ''
+  let g:unite_source_grep_encoding = 'utf-8'
+elseif executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+  let g:unite_source_grep_recursive_opt = ''
+  let g:unite_source_grep_encoding = 'utf-8'
+endif
