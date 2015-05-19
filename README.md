@@ -6,9 +6,9 @@ My vim settings
 
 Use curl
 ```
-curl -o - https://raw.githubusercontent.com/gonglexin/.nvim/master/install.sh | sh
+curl -o - https://raw.githubusercontent.com/gonglexin/.vim/master/install.sh | sh
 ```
 Or wget
 ```
-wget -O - https://raw.githubusercontent.com/gonglexin/.nvim/master/install.sh | sh
+wget -O - https://raw.githubusercontent.com/gonglexin/.vim/master/install.sh | sh
 ```
