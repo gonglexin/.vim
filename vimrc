@@ -115,6 +115,7 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+" set fillchars=vert:\|
 
 " Jump to the last know position in a file after opening it
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -192,7 +193,7 @@ nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
 " rubocop
-" let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 
 " Unite
 nnoremap <leader>x :Unite file_rec/async<CR>
@@ -214,3 +215,19 @@ elseif executable('ag')
   let g:unite_source_grep_recursive_opt = ''
   let g:unite_source_grep_encoding = 'utf-8'
 endif
+
+" Zoom / Restore window
+function! s:ZoomToggle() abort
+  if exists('t:zoomed') && t:zoomed
+    exec t:zoom_winrestcmd
+    let t:zoomed = 0
+  else
+    let t:zoom_winrestcmd = winrestcmd()
+    resize
+    vertical resize
+    let t:zoomed = 1
+  endif
+endfunction
+
+command! ZoomToggle call s:ZoomToggle()
+nnoremap <silent> <leader>z :ZoomToggle<CR>
