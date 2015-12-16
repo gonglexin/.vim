@@ -3,92 +3,70 @@
 "
 " God like this
 "
-
-if !1 | finish | endif
-filetype off
-
-if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
 if has('nvim')
   runtime! python_setup.vim
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-NeoBundleFetch 'Shougo/neobundle.vim'
+call plug#begin(expand('~/.vim/bundle/'))
 
 " General settings
-NeoBundle 'tpope/vim-sensible'
+Plug 'tpope/vim-sensible'
 
 " Navigation
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-" NeoBundle 'szw/vim-ctrlspace'
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make -f make_mac.mak',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ }
-NeoBundle 'Shougo/unite.vim'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'szw/vim-ctrlspace'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/unite.vim'
 
 " Moving
-NeoBundle 'Lokaltog/vim-easymotion'
+Plug 'Lokaltog/vim-easymotion'
 
 " Editing
-NeoBundle 'ervandew/supertab'
+Plug 'ervandew/supertab'
 
 " Colorscheme
-NeoBundle 'molokai'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'jnurmine/Zenburn'
+Plug 'molokai'
+Plug 'w0ng/vim-hybrid'
+Plug 'jnurmine/Zenburn'
 
 " Programming
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'tpope/vim-dispatch'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'ap/vim-css-color'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'mxw/vim-jsx'
-" NeoBundle 'slim-template/vim-slim.git'
-" NeoBundle 'mattn/webapi-vim'
-" NeoBundle 'mattn/gist-vim'
-NeoBundle 'fatih/vim-go'
-" NeoBundle 'gregsexton/gitv'
-NeoBundle 'janko-m/vim-test'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-surround'
+Plug 'tomtom/tcomment_vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'ap/vim-css-color'
+Plug 'scrooloose/syntastic'
+Plug 'kchmck/vim-coffee-script'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+" Plug 'slim-template/vim-slim.git'
+" Plug 'mattn/webapi-vim'
+" Plug 'mattn/gist-vim'
+Plug 'fatih/vim-go'
+" Plug 'gregsexton/gitv'
+Plug 'janko-m/vim-test'
 
-" NeoBundle 'Shougo/neocomplete.vim'
-" NeoBundle 'Shougo/neosnippet'
-" NeoBundle 'Shougo/neosnippet-snippets'
+" Plug 'Shougo/neocomplete.vim'
+" Plug 'Shougo/neosnippet'
+" Plug 'Shougo/neosnippet-snippets'
 
 " Git integration
-NeoBundle 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Tmux integration
-NeoBundle 'benmills/vimux'
+Plug 'benmills/vimux'
 
 " Other plugins
-NeoBundle 'bling/vim-airline'
-NeoBundle 'rking/ag.vim'
+Plug 'bling/vim-airline'
+Plug 'rking/ag.vim'
 
-call neobundle#end()
+call plug#end()
 filetype plugin indent on
-NeoBundleCheck
 
 " General
 let mapleader = ","
