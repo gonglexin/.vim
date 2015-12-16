@@ -63,6 +63,8 @@ NeoBundle 'honza/vim-snippets'
 NeoBundle 'ap/vim-css-color'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'mxw/vim-jsx'
 " NeoBundle 'slim-template/vim-slim.git'
 " NeoBundle 'mattn/webapi-vim'
 " NeoBundle 'mattn/gist-vim'
@@ -91,6 +93,8 @@ NeoBundleCheck
 " General
 let mapleader = ","
 set nu
+set background=dark
+colo hybrid
 
 nmap <leader>s :source $MYVIMRC<CR>
 nmap <leader>e :e $MYVIMRC<CR>
@@ -115,7 +119,6 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
-" set fillchars=vert:\|
 
 " Jump to the last know position in a file after opening it
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -137,6 +140,8 @@ let g:VimuxHeight = "30"
 autocmd FileType ruby       map <Leader>rr :call VimuxRunCommand("clear; ruby -w " . bufname("%"))<CR>
 autocmd FileType javascript map <Leader>rr :call VimuxRunCommand("clear; node " . bufname("%"))<CR>
 autocmd FileType go         map <Leader>rr :call VimuxRunCommand("clear; go run " . bufname("%"))<CR>
+autocmd FileType sh         map <Leader>rr :call VimuxRunCommand("clear;" . getline('.'))<CR>
+autocmd FileType sh         nnoremap <leader>r 0y$:!clear; <C-R>"<CR>
 map <Leader>vp :VimuxPromptCommand<CR>
 map <Leader>vl :VimuxRunLastCommand<CR>
 map <Leader>vi :VimuxInspectRunner<CR>
@@ -149,7 +154,7 @@ map <Leader>vz :VimuxZoomRunner<CR>
 " autocmd FileType ruby let b:dispatch = 'ruby -w %'
 autocmd FileType ruby let b:dispatch = 'ruby %'
 autocmd FileType javascript let b:dispatch = 'node %'
-autocmd FileType go let b:dispatch = 'go run %'
+" autocmd FileType go let b:dispatch = 'go run %'
 " nnoremap <leader>r :Dispatch<CR>
 nnoremap <leader>v :Copen<CR>
 
