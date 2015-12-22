@@ -24,6 +24,7 @@ Plug 'Lokaltog/vim-easymotion'
 
 " Editing
 Plug 'ervandew/supertab'
+Plug 'junegunn/vim-easy-align'
 
 " Colorscheme
 Plug 'molokai'
@@ -47,6 +48,7 @@ Plug 'mxw/vim-jsx'
 " Plug 'mattn/webapi-vim'
 " Plug 'mattn/gist-vim'
 Plug 'fatih/vim-go'
+Plug 'elixir-lang/vim-elixir'
 Plug 'gregsexton/gitv', { 'on': 'Gitv' }
 Plug 'janko-m/vim-test'
 
@@ -176,6 +178,12 @@ nmap <silent> <leader>g :TestVisit<CR>
 
 " rubocop
 let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+
+"" vim-easy-align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " Unite
 nnoremap <leader>x :Unite file_rec/async<CR>
