@@ -48,7 +48,7 @@ Plug 'mxw/vim-jsx'
 " Plug 'mattn/webapi-vim'
 " Plug 'mattn/gist-vim'
 Plug 'fatih/vim-go'
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'gregsexton/gitv', { 'on': 'Gitv' }
 Plug 'janko-m/vim-test'
 
@@ -63,7 +63,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'benmills/vimux'
 
 " Other plugins
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'rking/ag.vim'
 
 call plug#end()
