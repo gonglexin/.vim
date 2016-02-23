@@ -21,7 +21,7 @@ Plug 'Shougo/unite.vim'
 
 " Moving
 Plug 'Lokaltog/vim-easymotion'
-Plug 'christoomey/vim-tmux-navigator'
+" Plug 'christoomey/vim-tmux-navigator'
 
 " Editing
 Plug 'ervandew/supertab'
