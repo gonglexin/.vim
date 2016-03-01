@@ -120,11 +120,25 @@ nmap <leader>n :NERDTreeToggle<CR>
 " vimux
 let g:VimuxPromptString = "=>"
 let g:VimuxHeight = "30"
-autocmd FileType ruby       map <Leader>rr :call VimuxRunCommand("clear; ruby -w " . bufname("%"))<CR>
-autocmd FileType javascript map <Leader>rr :call VimuxRunCommand("clear; node " . bufname("%"))<CR>
-autocmd FileType go         map <Leader>rr :call VimuxRunCommand("clear; go run " . bufname("%"))<CR>
-autocmd FileType sh         map <Leader>rr :call VimuxRunCommand("clear;" . getline('.'))<CR>
+autocmd FileType ruby       map <Leader>vr :call VimuxRunCommand("clear; ruby -w " . bufname("%"))<CR>
+autocmd FileType javascript map <Leader>vr :call VimuxRunCommand("clear; node " . bufname("%"))<CR>
+autocmd FileType go         map <Leader>vr :call VimuxRunCommand("clear; go run " . bufname("%"))<CR>
+autocmd FileType sh         map <Leader>vr :call VimuxRunCommand("clear;" . getline('.'))<CR>
 autocmd FileType sh         nnoremap <leader>r 0y$:!clear; <C-R>"<CR>
+
+" Elixir {{{
+"
+" Treat mix.lock file as Elixir code
+autocmd BufNewFile,BufRead mix.lock setlocal filetype=elixir
+autocmd Filetype elixir nnoremap <buffer> <Leader>r :!elixir %<cr>
+autocmd Filetype elixir nnoremap <buffer> <Leader>k :!mix test %<cr>
+autocmd Filetype elixir nnoremap <buffer> <Leader>K :execute "!mix test --only line:" . line(".") . " %"<cr>
+autocmd Filetype elixir nnoremap <buffer> <Leader>vr :call VimuxRunCommand("clear; elixir " .  bufname("%"))<cr>
+autocmd Filetype elixir nnoremap <buffer> <Leader>vk :call VimuxRunCommand("clear; mix test " . bufname("%"))<cr>
+autocmd Filetype elixir nnoremap <buffer> <Leader>vK :call VimuxRunCommand("clear; mix test --only line:" . line(".") . " " .  bufname("%"))<cr>
+
+" }}}
+
 map <Leader>vp :VimuxPromptCommand<CR>
 map <Leader>vl :VimuxRunLastCommand<CR>
 map <Leader>vi :VimuxInspectRunner<CR>
