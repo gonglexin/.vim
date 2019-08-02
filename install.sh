@@ -2,7 +2,6 @@
 echo ""
 
 VIM_HOME=~/.vim
-BUNDLE_DIR=$VIM_HOME/bundle
 
 if [-e $VIM_HOME ]; then
   echo "$VIM_HOME already exists!"
