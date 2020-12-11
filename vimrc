@@ -15,6 +15,8 @@ Plug 'tpope/vim-sensible'
 " Navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Moving
 Plug 'Lokaltog/vim-easymotion'
@@ -63,7 +65,6 @@ Plug 'benmills/vimux'
 
 " Other plugins
 Plug 'itchyny/lightline.vim'
-Plug 'rking/ag.vim'
 
 call plug#end()
 
@@ -101,6 +102,25 @@ set expandtab
 
 " Jump to the last know position in a file after opening it
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+""{ fzf
+map <leader>p :Files<CR> 
+map <leader>g :GitFiles<CR>
+map <leader>ag :Ag<CR> 
+map <leader>b :Buffers<CR>
+map <leader><leader> :Commands<CR>
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+""}
+
 
 ""{ Ctrl-P
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
