@@ -59,6 +59,7 @@ Plug 'kitagry/vs-snippets'
 
 " Git integration
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " Tmux integration
 Plug 'benmills/vimux'
