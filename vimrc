@@ -15,8 +15,6 @@ Plug 'tpope/vim-sensible'
 " Navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 
 " Moving
 Plug 'Lokaltog/vim-easymotion'
@@ -42,6 +40,11 @@ Plug 'ap/vim-css-color'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 
+" DB
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'kristijanhusak/vim-dadbod-completion'
+
 " LSP
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
@@ -49,7 +52,7 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/quickpick.vim'
 Plug 'prabirshrestha/quickpick-lsp.vim'
-Plug 'liuchengxu/vim-clap'
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 Plug 'liuchengxu/vim-which-key'
 
 " Snippet
@@ -105,11 +108,15 @@ set expandtab
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 ""{ fzf
-map <leader>p :Files<CR> 
-map <leader>g :GitFiles<CR>
-map <leader>ag :Ag<CR> 
-map <leader>b :Buffers<CR>
-map <leader><leader> :Commands<CR>
+map <leader>f :Clap files<CR> 
+map <leader>g :Clap git_files<CR>
+map <leader>ag :Clap grep2<CR>
+map <leader>b :Clap buffers<CR>
+map <leader>c :Clap commits<CR>
+map <leader>bc :Clap bcommits<CR>
+map <leader><leader> :Clap command<CR>
+map <leader>ch :Clap command_history<CR>
+map <leader>j :Clap jumps<CR>
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
