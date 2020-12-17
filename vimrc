@@ -11,13 +11,14 @@ call plug#begin(expand('~/.vim/plugged/'))
 
 " General settings
 Plug 'tpope/vim-sensible'
+Plug 'mhinz/vim-startify'
 
 " Navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ctrlpvim/ctrlp.vim'
 
 " Moving
-Plug 'Lokaltog/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 
 " Editing
 Plug 'junegunn/vim-easy-align'
@@ -62,7 +63,8 @@ Plug 'kitagry/vs-snippets'
 
 " Git integration
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 
 " Tmux integration
 Plug 'benmills/vimux'
@@ -108,25 +110,15 @@ set expandtab
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 ""{ fzf
-map <leader>f :Clap files<CR>
-map <leader>g :Clap git_files<CR>
+map <leader>f  :Clap files<CR>
+map <leader>g  :Clap git_files<CR>
 map <leader>ag :Clap grep2<CR>
-map <leader>b :Clap buffers<CR>
-map <leader>c :Clap commits<CR>
+map <leader>b  :Clap buffers<CR>
+map <leader>c  :Clap commits<CR>
 map <leader>bc :Clap bcommits<CR>
-map <leader><leader> :Clap command<CR>
+map <leader>cm :Clap command<CR>
 map <leader>ch :Clap command_history<CR>
-map <leader>j :Clap jumps<CR>
-
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-l> <plug>(fzf-complete-line)
+map <leader>j  :Clap jumps<CR>
 ""}
 
 ""{ lightline
