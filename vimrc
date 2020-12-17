@@ -108,7 +108,7 @@ set expandtab
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 ""{ fzf
-map <leader>f :Clap files<CR> 
+map <leader>f :Clap files<CR>
 map <leader>g :Clap git_files<CR>
 map <leader>ag :Clap grep2<CR>
 map <leader>b :Clap buffers<CR>
