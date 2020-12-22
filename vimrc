@@ -15,7 +15,7 @@ Plug 'mhinz/vim-startify'
 
 " Navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 
 " Moving
 Plug 'easymotion/vim-easymotion'
@@ -32,6 +32,7 @@ Plug 'jnurmine/Zenburn'
 Plug 'arcticicestudio/nord-vim'
 
 " Programming
+" Plug 'direnv/direnv.vim'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-dispatch'
@@ -40,6 +41,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'ap/vim-css-color'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'neomake/neomake'
 
 " DB
 Plug 'tpope/vim-dadbod'
@@ -60,11 +62,12 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'kitagry/vs-snippets'
+Plug 'Chris56974/ruby-and-rails-snippets'
 
 " Git integration
 Plug 'tpope/vim-fugitive'
-" Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
+Plug 'APZelos/blamer.nvim'
 
 " Tmux integration
 Plug 'benmills/vimux'
@@ -109,8 +112,13 @@ set expandtab
 " Jump to the last know position in a file after opening it
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
-""{ fzf
+""{ starify
+let g:startify_session_persistence = 1
+"""}
+
+""{ clap
 map <leader>f  :Clap files<CR>
+map <C-p>      :Clap files<CR>
 map <leader>g  :Clap git_files<CR>
 map <leader>ag :Clap grep2<CR>
 map <leader>b  :Clap buffers<CR>
@@ -135,7 +143,7 @@ let g:lightline = {
 ""}
 
 ""{ Ctrl-P
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 ""}
 
 ""{ vim-which-key
