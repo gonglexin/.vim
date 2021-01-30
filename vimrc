@@ -11,7 +11,7 @@ call plug#begin(expand('~/.vim/plugged/'))
 
 " General settings
 Plug 'tpope/vim-sensible'
-Plug 'mhinz/vim-startify'
+Plug 'wakatime/vim-wakatime'
 
 " Navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -42,6 +42,8 @@ Plug 'ap/vim-css-color'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'neomake/neomake'
+Plug 'vim-syntastic/syntastic'
+Plug 'vim-test/vim-test'
 
 " DB
 Plug 'tpope/vim-dadbod'
@@ -112,10 +114,6 @@ set expandtab
 
 " Jump to the last know position in a file after opening it
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-""{ starify
-let g:startify_session_persistence = 1
-"""}
 
 ""{ clap
 map <leader>f  :Clap files<CR>
@@ -192,6 +190,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 imap <c-space> <Plug>(asyncomplete_force_refresh)
 
+" asyncomplete-file
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
     \ 'name': 'file',
     \ 'allowlist': ['*'],
@@ -275,13 +274,19 @@ nnoremap <leader>v :Copen<CR>
 " autocmd FileType ruby,eruby let g:rubycomplete_use_bundler = 1
 
 ""{ vim-test
-let test#strategy = "vimux"
+let test#strategy = "vimterminal"
+" let test#strategy = "vimux"
 " let test#strategy = "dispatch"
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>v :TestVisit<CR>
+nmap <silent> <leader>tt :TestNearest<CR>
+nmap <silent> <leader>tT :TestFile<CR>
+nmap <silent> <leader>ta :TestSuite<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tv :TestVisit<CR>
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
 ""}
 
 ""{ vim-easy-align
